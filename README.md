@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+[x] Math.pow(Math.floor((stage/2) + 1), 2)개의 사각형이 표시되며, 그 중 하나만 색깔이 다릅니다.
+[x] 한 stage의 제한 시간은 15초입니다.
+[] 색이 다른 사각형(정답)을 클릭한 경우 아래 변경사항이 적용됩니다.
+  [x] 다음 스테이지로 넘어갑니다.
+  [] stage * stage * 남은시간 만큼의 score가 누적됩니다.
+[x] 오답을 클릭한 경우 아래 변경사항이 적용됩니다.
+  [x] 현재 stage의 남은 시간이 3초 줄어듭니다.
+[] 남은 시간이 0초 이하가 되면 게임이 종료됩니다. 최종 stage와 누적 score를 출력하고, 새로운 게임을 시작할 수 있습니다.
+[] stage가 올라갈수록 정답과 오답의 색상 차이가 줄어듭니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<hr>
 
-## Available Scripts
+다음의 조건에 맞게 진행해주세요
+1. React Framework를 사용할 것
+2. Function Component를 활용할 것
+3. Javascript보다는 Typescript를 활용할 것
+4. 서버에 배포할 것 (Vercel과 같은 서비스를 이용해보세요)
+5. **Context, Redux, Mobx, Recoil** 등 상태관리 도구를 사용하지 않을 것
 
-In the project directory, you can run:
+<hr>
 
-### `npm start`
+* 점수 확인 후 게임 새로 시작
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![](2022-02-05-22-07-59.png)
+![](2022-02-05-22-08-12.png)
