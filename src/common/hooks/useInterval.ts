@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from "react";
 
 export const useInterval = (callback: () => void, delay: number | null) => {
   const currentCallback = useRef<ReturnType<typeof Function>>();
@@ -9,10 +9,10 @@ export const useInterval = (callback: () => void, delay: number | null) => {
 
   useEffect(() => {
     if (delay !== null) {
-      let id = setInterval(() => {
-        if (currentCallback.current) currentCallback.current()
+      const id = setInterval(() => {
+        if (currentCallback.current) currentCallback.current();
       }, 1000);
       return () => clearInterval(id);
     }
   }, [delay]);
-}
+};

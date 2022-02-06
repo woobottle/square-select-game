@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components';
-import { minusTime } from '../common/constants';
-import { getBlockColors, getPlusScore } from '../common/utils';
-import { BoardBlock } from './BoardBlock';
-import { initialTime } from '../common/constants/index';
+import React from "react";
+import styled from "styled-components";
+import { minusTime } from "../common/constants";
+import { getBlockColors, getPlusScore } from "../common/utils";
+import { BoardBlock } from "./BoardBlock";
+import { initialTime } from "../common/constants/index";
 
 interface GameBoardProps {
   stage: number;
@@ -13,32 +13,42 @@ interface GameBoardProps {
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GameBoard = ({ timeRef, stage, setStage, setTime, setScore }: GameBoardProps) => {
+const GameBoard = ({
+  timeRef,
+  stage,
+  setStage,
+  setTime,
+  setScore,
+}: GameBoardProps) => {
   const size = Math.pow(Math.ceil(stage / 2) + 1, 2);
-  const answer = ~~(Math.random() * size)
-  const questions = Array(size).fill(0)
-  questions[answer] = 1
+  const answer = ~~(Math.random() * size);
+  const questions = Array(size).fill(0);
+  questions[answer] = 1;
 
-  const { answerColor, baseColor } = getBlockColors(stage); 
+  const { answerColor, baseColor } = getBlockColors(stage);
   const wrongClick = () => {
-    setTime((el) => el -= minusTime)
-  }
-  
+    setTime((el) => (el -= minusTime));
+  };
+
   const nextStage = () => {
     const plusScore = getPlusScore(stage, timeRef.current);
-    setScore((score) => score += plusScore)
-    setStage((el) => el += 1)
-    setTime(initialTime)
-  }
+    setScore((score) => (score += plusScore));
+    setStage((el) => (el += 1));
+    setTime(initialTime);
+  };
 
   return (
     <GameBoardWrapper>
-      {questions.map((question) => 
-        <BoardBlock size={size} onClick={question === 0 ? wrongClick : nextStage} color={question === 0 ? baseColor : answerColor} />
-      )}
+      {questions.map((question) => (
+        <BoardBlock
+          size={size}
+          onClick={question === 0 ? wrongClick : nextStage}
+          color={question === 0 ? baseColor : answerColor}
+        />
+      ))}
     </GameBoardWrapper>
-  )
-}
+  );
+};
 
 export default React.memo(GameBoard);
 
@@ -47,7 +57,7 @@ const GameBoardWrapper = styled.div`
   height: 840px;
   display: flex;
   flex-flow: row wrap;
-`
+`;
 
 // answer: 0
 // answerColor: "rgb(172, 111, 148)"
@@ -68,7 +78,7 @@ const GameBoardWrapper = styled.div`
 // time: 14
 
 // answer: 32
-// answerColor: "rgb(136, 34, 145)" 
+// answerColor: "rgb(136, 34, 145)"
 // baseColor: "rgb(114, 12, 167)" 22
 // isPlaying: true
 // onSelect: ƒ(t)

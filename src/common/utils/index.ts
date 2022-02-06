@@ -13,7 +13,7 @@ export const getBlockColors = (stage: number) => {
   const _red = Math.round((red / 100) * (70 + stage));
   const _blue = Math.round((blue / 100) * (70 + stage));
   const _green = Math.round((green / 100) * (70 + stage));
-  
+
   return {
     answerColor: `rgb(${red}, ${blue}, ${green})`,
     baseColor: `rgb(${_red}, ${_blue}, ${_green})`,
