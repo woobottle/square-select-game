@@ -1,9 +1,4 @@
-import React, { useRef, useEffect } from 'react';
-
-interface useIntervalProps {
-  callback: () => void;
-  delay: number | null;
-}
+import { useRef, useEffect } from 'react';
 
 export const useInterval = (callback: () => void, delay: number | null) => {
   const currentCallback = useRef<ReturnType<typeof Function>>();

@@ -1,45 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { useInterval } from '../common/hooks/index';
+import React from 'react';
+import styled from 'styled-components';
 
-interface HeaderProps {
+interface ScoreBoardProps {
   stage: number;
   time: number;
   score: number;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
-  setStage: React.Dispatch<React.SetStateAction<number>>;
-  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Header = ({ stage, time, score, setTime, setStage, setScore}: HeaderProps ) => {
-  const [isRunning, setIsRunning] = useState<boolean>(true)
-
-  useEffect(() => {
-    if (time <= 0) {
-      setTime(0)
-      setIsRunning(false)
-    }
-  }, [time])
-
-  useEffect(() => {
-    if (isRunning === false) {
-      alert(score);
-      setTime(15)
-      setStage(1)
-      setScore(0)
-      setIsRunning(true);
-    }
-  }, [isRunning, score])
-
-  useInterval(() => setTime((currTime) => currTime -= 1), isRunning ? 1000 : null);
-
+const ScoreBoard = ({ stage, time, score }: ScoreBoardProps ) => { 
   return (
-    <div style={{display: "flex"}}>
-      <div>스테이지: {stage}</div>
-      <div>남은시간: {time}</div>
-      <div>점수: {score}</div>
-    </div>
+    <ScoreBoardWrapper>
+      <p>스테이지: {stage}, 남은시간: {time}, 점수: {score}</p>
+    </ScoreBoardWrapper>
   )
 }
 
-export default React.memo(Header);
+export default React.memo(ScoreBoard);
+
+const ScoreBoardWrapper = styled.div`
+  width: 30%;
+  justify-content: center;
+  display: flex;
+`;
