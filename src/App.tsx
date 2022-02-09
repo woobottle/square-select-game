@@ -1,17 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { ScoreBoard, GameBoard } from "./components";
 import { useInterval } from "./common/hooks";
-import {
-  initialStage,
-  initialTime,
-  initialScore,
-} from "./common/constants/index";
+import { INITIAL_STAGE, INITIAL_TIME, INITIAL_SCORE } from "./common/constants";
 import { getResultText } from "./common/utils";
 
 function App() {
-  const [stage, setStage] = useState<number>(initialStage);
-  const [time, setTime] = useState<number>(initialTime);
-  const [score, setScore] = useState<number>(initialScore);
+  const [stage, setStage] = useState<number>(INITIAL_STAGE);
+  const [time, setTime] = useState<number>(INITIAL_TIME);
+  const [score, setScore] = useState<number>(INITIAL_SCORE);
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const resultText = useMemo(() => getResultText(stage, score), [stage, score]);
   const timeRef = useRef<number>(time);
@@ -24,7 +20,7 @@ function App() {
   useEffect(() => {
     timeRef.current = time;
     if (time <= 0) {
-      setTime(initialTime);
+      setTime(INITIAL_TIME);
       setIsRunning(false);
     }
   }, [time]);
@@ -33,9 +29,9 @@ function App() {
     if (isRunning === false) {
       alert(resultText);
 
-      setStage(initialStage);
-      setTime(initialTime);
-      setScore(initialScore);
+      setStage(INITIAL_STAGE);
+      setTime(INITIAL_TIME);
+      setScore(INITIAL_SCORE);
       setIsRunning(true);
     }
   }, [isRunning, resultText]);

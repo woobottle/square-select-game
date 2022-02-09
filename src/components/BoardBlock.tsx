@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 interface BoardBlockProps {
   color: string;
@@ -6,15 +7,14 @@ interface BoardBlockProps {
   onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
+type BoardBlockFragmentType = Omit<BoardBlockProps, "onClick">;
+
 export const BoardBlock = ({ color, size, onClick }: BoardBlockProps) => {
-  return (
-    <div
-      style={{
-        width: `calc(800px/${Math.sqrt(size)})`,
-        backgroundColor: color,
-        margin: "1px",
-      }}
-      onClick={onClick}
-    />
-  );
+  return <BoardBlockFragment color={color} size={size} onClick={onClick} />;
 };
+
+const BoardBlockFragment = styled.div<BoardBlockFragmentType>`
+  width: calc(800px / ${(props) => Math.sqrt(props.size)});
+  background-color: ${(props) => props.color};
+  margin: 1px;
+`;

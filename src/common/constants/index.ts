@@ -1,4 +1,4 @@
-export const minusTime = 3;
-export const initialStage = 1;
-export const initialTime = 15;
-export const initialScore = 0;
+export const MINUS_TIME = 3;
+export const INITIAL_STAGE = 1;
+export const INITIAL_TIME = 15;
+export const INITIAL_SCORE = 0;

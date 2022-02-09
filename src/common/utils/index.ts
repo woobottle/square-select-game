@@ -10,9 +10,9 @@ export const getBlockColors = (stage: number) => {
   const blue = Math.round(Math.random() * 255);
   const green = Math.round(Math.random() * 255);
 
-  const _red = Math.round((red / 100) * (70 + stage));
-  const _blue = Math.round((blue / 100) * (70 + stage));
-  const _green = Math.round((green / 100) * (70 + stage));
+  const _red = Math.round((red / 100) * (70 + stage * 2));
+  const _blue = Math.round((blue / 100) * (70 + stage * 2));
+  const _green = Math.round((green / 100) * (70 + stage * 2));
 
   return {
     answerColor: `rgb(${red}, ${blue}, ${green})`,
