@@ -35,13 +35,26 @@ const GameBoard = ({
     setTime(INITIAL_TIME);
   };
 
+  const blockClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!(event.target instanceof HTMLDivElement)) {
+      return;
+    }
+    const { question } = event.target.dataset;
+
+    if (Number(question) === answer) {
+      goNextStage();
+    } else {
+      wrongClick();
+    }
+  };
+
   return (
-    <GameBoardWrapper>
+    <GameBoardWrapper onClick={blockClickHandler}>
       {questions &&
         questions.map((question) => (
           <BoardBlock
             size={size}
-            onClick={question === answer ? goNextStage : wrongClick}
+            question={question}
             color={question === answer ? answerColor : baseColor}
           />
         ))}

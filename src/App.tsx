@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ScoreBoard, GameBoard } from "./components";
 import { useInterval } from "./common/hooks";
 import { INITIAL_STAGE, INITIAL_TIME, INITIAL_SCORE } from "./common/constants";

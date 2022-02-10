@@ -1,16 +1,17 @@
-import React from "react";
 import styled from "styled-components";
 
 interface BoardBlockProps {
+  question: number;
   color: string;
   size: number;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-type BoardBlockFragmentType = Omit<BoardBlockProps, "onClick">;
+type BoardBlockFragmentType = Omit<BoardBlockProps, "question">;
 
-export const BoardBlock = ({ color, size, onClick }: BoardBlockProps) => {
-  return <BoardBlockFragment color={color} size={size} onClick={onClick} />;
+export const BoardBlock = ({ question, color, size }: BoardBlockProps) => {
+  return (
+    <BoardBlockFragment color={color} size={size} data-question={question} />
+  );
 };
 
 const BoardBlockFragment = styled.div<BoardBlockFragmentType>`
