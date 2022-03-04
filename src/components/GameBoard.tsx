@@ -1,39 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { MINUS_TIME, INITIAL_TIME } from "../common/constants";
-import { getBlockColors, getPlusScore } from "../common/utils";
 import { BoardBlock } from "./BoardBlock";
 
 interface GameBoardProps {
   stage: number;
-  timeRef: React.MutableRefObject<number>;
-  setStage: React.Dispatch<React.SetStateAction<number>>;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
-  setScore: React.Dispatch<React.SetStateAction<number>>;
+  answerTileColor: string;
+  wrongTileColor: string;
+  answerIndex: number;
+  onSelect: (input: number) => void;
 }
 
 const GameBoard = ({
-  timeRef,
   stage,
-  setStage,
-  setTime,
-  setScore,
+  answerTileColor,
+  wrongTileColor,
+  answerIndex,
+  onSelect,
 }: GameBoardProps) => {
   const size = Math.pow(Math.ceil(stage / 2) + 1, 2);
-  const answer = ~~(Math.random() * size);
   const questions = Array.from({ length: size }, (_, i) => i);
-  const { answerColor, baseColor } = getBlockColors(stage);
-
-  const wrongClick = () => {
-    setTime((time) => (time -= MINUS_TIME));
-  };
-
-  const goNextStage = () => {
-    const plusScore = getPlusScore(stage, timeRef.current);
-    setScore((score) => (score += plusScore));
-    setStage((stage) => (stage += 1));
-    setTime(INITIAL_TIME);
-  };
 
   const blockClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!(event.target instanceof HTMLDivElement)) {
@@ -41,11 +26,7 @@ const GameBoard = ({
     }
     const { question } = event.target.dataset;
 
-    if (Number(question) === answer) {
-      goNextStage();
-    } else {
-      wrongClick();
-    }
+    onSelect(Number(question));
   };
 
   return (
@@ -55,7 +36,7 @@ const GameBoard = ({
           <BoardBlock
             size={size}
             question={question}
-            color={question === answer ? answerColor : baseColor}
+            color={question === answerIndex ? answerTileColor : wrongTileColor}
           />
         ))}
     </GameBoardWrapper>

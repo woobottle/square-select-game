@@ -1,23 +1,22 @@
-import React from "react";
 import styled from "styled-components";
 
 interface ScoreBoardProps {
   stage: number;
-  time: number;
+  remainSeconds: number;
   score: number;
 }
 
-const ScoreBoard = ({ stage, time, score }: ScoreBoardProps) => {
+const ScoreBoard = ({ stage, remainSeconds, score }: ScoreBoardProps) => {
   return (
     <ScoreBoardWrapper>
       <p>
-        스테이지: {stage}, 남은시간: {time}, 점수: {score}
+        스테이지: {stage}, 남은시간: {remainSeconds}, 점수: {score}
       </p>
     </ScoreBoardWrapper>
   );
 };
 
-export default React.memo(ScoreBoard);
+export default ScoreBoard;
 
 const ScoreBoardWrapper = styled.div`
   width: 30%;
