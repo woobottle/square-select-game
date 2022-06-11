@@ -43,7 +43,7 @@ const GameBoard = ({
   );
 };
 
-export default React.memo(GameBoard);
+export default GameBoard;
 
 const GameBoardWrapper = styled.div`
   width: 840px;

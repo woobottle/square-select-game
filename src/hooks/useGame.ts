@@ -1,5 +1,5 @@
 import { useInterval } from "./useInterval";
-import { useCallback, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import {
   getAnswerIndex,
   getBlockColors,
@@ -88,16 +88,13 @@ export const useGame = () => {
     }
   }, [state.isRunning]);
 
-  const select = useCallback(
-    (questionIndex: number) => {
-      if (questionIndex === state.answerIndex) {
-        dispatch({ type: "SELECT_ANSWER" });
-      } else {
-        dispatch({ type: "SELECT_WRONG" });
-      }
-    },
-    [state.answerIndex]
-  );
+  const select = (questionIndex: number) => {
+    if (questionIndex === state.answerIndex) {
+      dispatch({ type: "SELECT_ANSWER" });
+    } else {
+      dispatch({ type: "SELECT_WRONG" });
+    }
+  };
 
   return {
     state,
