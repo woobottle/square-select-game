@@ -24,3 +24,40 @@
 * 점수 확인 후 게임 새로 시작
 
 ![square](https://user-images.githubusercontent.com/50283326/153191131-e9e4e7ab-8a7b-4a98-86ae-cbb85a73534e.gif)
+
+
+
+header => stage, time, score => values
+body => stage, normalColor, answerColor => values, 
+        setStage, setTime, setScore => action
+        전체 칸수 => stage로 알 수 있음
+
+렌더링을 변화시키는 것을 state로 관리하여야 한다.
+
+1. 게임을 시작하면 
+  - 스테이지가 1이 된다.
+  - 점수가 0이 된다.
+  - "게임중" 상태가 된다
+  - 남은시간이 15가 된다.
+2. 정답을 고르면
+  - 남은시간이 15가 된다.
+  - 스테이지가 1증가한다.
+  - 점수가 늘어난다
+3. 오답을 고르면
+  - 남은시간이 3줄어든다. 시간은 0미만이 되지 않는다.
+4. "게임중" 이면 1초마다
+  - 남은시간이 1줄어든다. 시간은 0미만이 되지 않는다.
+5. 게임이 종료되면
+  - "게임종료" 상태가 된다.
+
+=> 스테이지, 점수, 남은시간, "게임중"/"게임종료", 정답의 index
+stage, score, remainSecond, isPlaying, answerIndex
+
+1. 이번 스테이지에서 노출되는 사각형의 개수
+2. 이번 스테이지에서 정답인 사각형의 색상
+3. 이번 스테이지에서 오답인 사각형의 색상
+4. 이번 스테이지에서 노출되는 사각형의 너비/높이
+tileCount, answerTileColor, wrongTileColor, tileWidth
+
+tileCount, tileWidth는 stage만으로 알수 있으므로 state로 정의 x
+

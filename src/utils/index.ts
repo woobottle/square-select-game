@@ -1,8 +1,8 @@
 export const getResultText = (stage: number, score: number) =>
   `최종 stage는 ${stage} 점수는 ${score} 입니다!!`;
 
-export const getPlusScore = (stage: number, remainTime: number) => {
-  return stage * stage * remainTime;
+export const getPlusScore = (stage: number, remainSeconds: number) => {
+  return stage * stage * remainSeconds;
 };
 
 export const getBlockColors = (stage: number) => {
@@ -15,7 +15,14 @@ export const getBlockColors = (stage: number) => {
   const _green = Math.round((green / 100) * (70 + stage * 2));
 
   return {
-    answerColor: `rgb(${red}, ${blue}, ${green})`,
-    baseColor: `rgb(${_red}, ${_blue}, ${_green})`,
+    answerTileColor: `rgb(${red}, ${blue}, ${green})`,
+    wrongTileColor: `rgb(${_red}, ${_blue}, ${_green})`,
   };
+};
+
+export const getAnswerIndex = (stage: number) => {
+  const size = Math.pow(Math.ceil(stage / 2) + 1, 2);
+  const answer = ~~(Math.random() * size);
+
+  return answer;
 };
